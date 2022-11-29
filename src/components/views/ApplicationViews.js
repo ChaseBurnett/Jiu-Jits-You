@@ -12,7 +12,7 @@ export const ApplicationViews = () => {
 
   return (
     <>
-      <h1>A Blank Page!!</h1>
+      <h1>Jiu Jits YOU</h1>
       {/* logout button */}
       <button type="submit" onClick={onLogout}>
         Logout
