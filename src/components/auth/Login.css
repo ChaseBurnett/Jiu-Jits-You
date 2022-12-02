@@ -61,3 +61,10 @@ fieldset {
   position: relative;
   bottom: -2rem;
 }
+
+body {
+  background-image: url();
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position: center;
+}
