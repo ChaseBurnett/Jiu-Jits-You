@@ -1,5 +1,7 @@
 body {
-    background-image: url(https://images.squarespace-cdn.com/content/v1/57d0b1c51b631b92e875dc2b/1497368711176-49YFK2HSWURMEL97RR5O/_MC36854-Edit.jpg);
+    background-image: url();
     background-size:cover;
     background-repeat:no-repeat;
+    background-position: center;
+    background-color: bisque;
 }
