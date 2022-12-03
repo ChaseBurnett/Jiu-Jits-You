@@ -17,14 +17,14 @@ export const NewSessionForm = () => {
     })
 
     const navigate = useNavigate()
-    const localBjjUser = localStorage.getItem("bjj_user")
-    const bjjUserObject = JSON.parse(localBjjUser)
+    const localJjUser = localStorage.getItem("capstone_user")
+    const jjUserObject = JSON.parse(localJjUser)
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
          const formToSendToAPI = {
-           userId: bjjUserObject.id,
+           uid: jjUserObject.uid,
            date:form.date,
            classLocation: form.classLocation,
            classDescription: form.classDescription,
@@ -180,6 +180,24 @@ export const NewSessionForm = () => {
                            (event) => {
                               const copy = {...form}
                               copy.terrible = event.target.checked
+                              update(copy)
+                           }
+                        } />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="classDescription">Areas to Improve On:</label>
+                    <input
+                        required autoFocus
+                        type="text"
+                        className="form-control"
+                        placeholder="What do you need to work on?"
+                        value={form.improvementBox}
+                        onChange={
+                           (event) => {
+                              const copy = {...form}
+                              copy.improvementBox = event.target.value
                               update(copy)
                            }
                         } />
