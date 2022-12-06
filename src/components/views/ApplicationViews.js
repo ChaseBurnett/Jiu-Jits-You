@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { PhotoUpload } from "../photoStorage/PhotoUpload";
-import { UserNav } from "../nav/NavBar";
+import { MainPage } from "../main/MainPage";
+
 
 export const ApplicationViews = () => {
   let navigate = useNavigate();
@@ -9,10 +9,8 @@ export const ApplicationViews = () => {
 
   return (
     <>
-      <UserNav />
-      <h1>Jiu Jits YOU</h1>
-      {/* move this component to where you want your PhotoUpload */}
-      <PhotoUpload />
+    <MainPage />
+    
     </>
   );
 };

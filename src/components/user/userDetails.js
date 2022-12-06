@@ -23,17 +23,10 @@ export const UserDetails = () => {
 
     useEffect(
         () => {
-            if (jjUserObject) {
-                const userInfo = users.filter(user => user.uid === jjUserObject.uid)
-                setFiltered(userInfo)
-            }
-            else {
-                    return (
-                        <></>
-                    )
-            }
+            const userInfo = users.filter((user) => user.uid === jjUserObject.uid)
+            setFiltered(userInfo)
         },
-        []
+        [users]
     )
 
     return(

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { UserNav } from "../nav/NavBar"
 import { UserDetails } from "../user/userDetails";
 
@@ -51,6 +52,9 @@ export const MainPage = () => {
             filteredPosts.map(
                 (post) => {
                     return <section className="post">
+                    <header>
+                    <Link to={`/sessionForm/${post.id}/edit`}>Post {post.id}</Link>
+                    </header>
                     <p>{post.date}</p>
                     <p>{post.classLocation}</p>
                     <p>{post.classDescription}</p>
@@ -60,8 +64,7 @@ export const MainPage = () => {
                     <p>{post.okay ? "🥹" : ""}</p>
                     <p>{post.terrible ? "🤬" : "" }</p>
                     <p>{post.improvementBox}</p>
-
-                </section>
+                    </section>
                 }
             )
         }    
