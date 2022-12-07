@@ -4,7 +4,7 @@ import { UserNav } from "../nav/NavBar"
 
 export const EditPost = () => {
 
-    const [form, assignPost] = useState({
+    const [posts, update] = useState({
         date: "",
         classLocation: "",
         classDescription: "",
@@ -16,39 +16,61 @@ export const EditPost = () => {
         improvementBox: ""
     })
     
-    const { postsId } = useParams()
     const navigate = useNavigate()
+    const localJjUser = localStorage.getItem("capstone_user")
+    const jjUserObject = JSON.parse(localJjUser)
+    const { postsId } = useParams()
 
-    useEffect(() => {
-        fetch(`http://localhost:8088/posts/${postsId}`)
-            .then(response => response.json())
-            .then((data) => {
-                assignPost(data)
-            })
-    }, [postsId])
+    useEffect(
+        () => {
+            const fetchData = async () => {
+                const response = await fetch(`http://localhost:8088/posts/${postsId}`)
+                const postsArray = await response.json()
+                update(postsArray)
+            }
+            fetchData()
+        },
+        [postsId]
+    )
 
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
-        return fetch(`http://localhost:8088/posts/${form.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(form)
-        })
-            .then(response => response.json())
-            .then(() => {
-                navigate("/mainPage")
-            })
+         const formToSendToAPI = {
+           uid: jjUserObject.uid,
+           date:posts.date,
+           classLocation: posts.classLocation,
+           classDescription: posts.classDescription,
+           skillUrl: posts.skillUrl,
+           reallyGood: posts.reallyGood,
+           good: posts.good,
+           okay: posts.okay,
+           terrible: posts.terrible,
+           improvementBox: posts.improvementBox
+         }
+    
+
+    const putData = async () => {
+        const options = {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formToSendToAPI)
+        }
+        const response = await fetch (`http://localhost:8088/posts/${posts.id}`, options);
+        await response.json();
+        navigate("/mainpage")
     }
+      putData()
+    }   
 
     return (
         <>
         <UserNav />
         <form className="form">
-            <h2 className="form__title">Log New Training Session</h2>
+            <h2 className="form__title">Edit Training Session</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="date">Date:</label>
@@ -57,12 +79,12 @@ export const EditPost = () => {
                         type="text"
                         className="form-control"
                         placeholder="Date of Training session"
-                        value={form.date}
+                        value={posts.date}
                         onChange={
                            (event) => {
-                              const copy = {...form}
+                              const copy = {...posts}
                               copy.date = event.target.value
-                              assignPost(copy)
+                              update(copy)
                            }
                         } />
                 </div>
@@ -75,12 +97,12 @@ export const EditPost = () => {
                         type="text"
                         className="form-control"
                         placeholder="Name of Gym"
-                        value={form.classLocation}
+                        value={posts.classLocation}
                         onChange={
                            (event) => {
-                              const copy = {...form}
+                              const copy = {...posts}
                               copy.classLocation = event.target.value
-                              assignPost(copy)
+                              update(copy)
                            }
                         } />
                 </div>
@@ -93,12 +115,12 @@ export const EditPost = () => {
                         type="text"
                         className="form-control"
                         placeholder="How was class?"
-                        value={form.classDescription}
+                        value={posts.classDescription}
                         onChange={
                            (event) => {
-                              const copy = {...form}
+                              const copy = {...posts}
                               copy.classDescription = event.target.value
-                              assignPost(copy)
+                              update(copy)
                            }
                         } />
                 </div>
@@ -111,12 +133,12 @@ export const EditPost = () => {
                         type="url"
                         className="form-control"
                         placeholder="upload URL"
-                        value={form.skillUrl}
+                        value={posts.skillUrl}
                         onChange={
                            (event) => {
-                              const copy = {...form}
+                              const copy = {...posts}
                               copy.skillUrl = event.target.value
-                              assignPost(copy)
+                              update(copy)
                            }
                         } />
                 </div>
@@ -125,12 +147,12 @@ export const EditPost = () => {
                 <div className="form-group">
                     <label htmlFor="ReallyGood">ReallyGood:</label>
                     <input type="radio"
-                        value={form.reallyGood}
+                        value={posts.reallyGood}
                         onChange={
                            (event) => {
-                              const copy = {...form}
+                              const copy = {...posts}
                               copy.reallyGood = event.target.checked
-                              assignPost(copy)
+                              update(copy)
                            }
                         } />
                 </div>
@@ -139,12 +161,12 @@ export const EditPost = () => {
                 <div className="form-group">
                     <label htmlFor="good">Good:</label>
                     <input type="radio"
-                        value={form.good}
+                        value={posts.good}
                         onChange={
                            (event) => {
-                              const copy = {...form}
+                              const copy = {...posts}
                               copy.good = event.target.checked
-                              assignPost(copy)
+                              update(copy)
                            }
                         } />
                 </div>
@@ -153,12 +175,12 @@ export const EditPost = () => {
                 <div className="form-group">
                     <label htmlFor="okay">Okay:</label>
                     <input type="radio"
-                        value={form.okay}
+                        value={posts.okay}
                         onChange={
                            (event) => {
-                              const copy = {...form}
+                              const copy = {...posts}
                               copy.okay = event.target.checked
-                              assignPost(copy)
+                              update(copy)
                            }
                         } />
                 </div>
@@ -167,12 +189,12 @@ export const EditPost = () => {
                 <div className="form-group">
                     <label htmlFor="terrible">Terrible:</label>
                     <input type="radio"
-                        value={form.terrible}
+                        value={posts.terrible}
                         onChange={
                            (event) => {
-                              const copy = {...form}
+                              const copy = {...posts}
                               copy.terrible = event.target.checked
-                              assignPost(copy)
+                              update(copy)
                            }
                         } />
                 </div>
@@ -185,12 +207,12 @@ export const EditPost = () => {
                         type="text"
                         className="form-control"
                         placeholder="What do you need to work on?"
-                        value={form.improvementBox}
+                        value={posts.improvementBox}
                         onChange={
                            (event) => {
-                              const copy = {...form}
+                              const copy = {...posts}
                               copy.improvementBox = event.target.value
-                              assignPost(copy)
+                              update(copy)
                            }
                         } />
                 </div>

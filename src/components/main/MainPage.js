@@ -41,6 +41,19 @@ export const MainPage = () => {
         [posts]
     )
 
+    const deleteButton = () => {
+        return <button onClick={()=> {
+            const deleteButtonAction = async () => {
+               await fetch(`http://localhost:8088/posts/${posts.id}`, {
+                  method: "DELETE"
+               })
+            }
+            deleteButtonAction()
+            .then("/mainpage")
+         }} className="post_delete">Delete</button>
+      }
+    
+
     return (
         <>
         <UserNav />
@@ -64,6 +77,9 @@ export const MainPage = () => {
                     <p>{post.okay ? "🥹" : ""}</p>
                     <p>{post.terrible ? "🤬" : "" }</p>
                     <p>{post.improvementBox}</p>
+                    <footer>
+                        {deleteButton()}
+                    </footer>
                     </section>
                 }
             )

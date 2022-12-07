@@ -14,7 +14,7 @@ export const JiuJitsYou = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/logsession" element={<NewSessionForm />} />
       <Route path="/mainPage" element={<MainPage />} />
-      <Route path="/sessionForm/:postId/edit" element={<EditPost />} />
+      <Route path="/sessionForm/:postsId/edit" element={<EditPost />} />
 
       <Route
         path="*"
