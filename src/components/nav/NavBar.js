@@ -12,16 +12,16 @@ export const UserNav = () => {
     return (
         <ul className="navbar">
             <li className="navbar__item">
-                <Link className="navbar__link" to="/mainpage">Main Page</Link>
+                <Link className="navbar__link" to="/mainPage">Main Page</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/logsession">Log New Training Session</Link>
+                <Link className="navbar__link" to="/logSession">Log New Training Session</Link>
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to="/competitions">Competitions</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/searchgyms">Gym Search</Link>
+                <Link className="navbar__link" to="/searchGyms">Gym Search</Link>
             </li>
             <li className="navbar__item navbar__logout">
                 <Link className="navbar__link" to="" onClick={onLogout}>Logout</Link>

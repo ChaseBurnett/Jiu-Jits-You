@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserNav } from "../nav/NavBar"
 import { UserDetails } from "../user/userDetails";
+import { useNavigate } from "react-router-dom";
 
 
 export const MainPage = () => {
 
     const [posts, setPosts] = useState([])
     const [filteredPosts, setFiltered] = useState([])
+    const navigate = useNavigate()
 
 
     const localJjUser = localStorage.getItem("capstone_user")
@@ -41,15 +43,15 @@ export const MainPage = () => {
         [posts]
     )
 
-    const deleteButton = () => {
+    const deleteButton = (id) => {
         return <button onClick={()=> {
             const deleteButtonAction = async () => {
-               await fetch(`http://localhost:8088/posts/${posts.id}`, {
+               await fetch(`http://localhost:8088/posts/${id}`, {
                   method: "DELETE"
                })
             }
             deleteButtonAction()
-            .then("/mainpage")
+            navigate("/mainPage")
          }} className="post_delete">Delete</button>
       }
     
@@ -78,7 +80,7 @@ export const MainPage = () => {
                     <p>{post.terrible ? "🤬" : "" }</p>
                     <p>{post.improvementBox}</p>
                     <footer>
-                        {deleteButton()}
+                    {deleteButton(post.id)}
                     </footer>
                     </section>
                 }
