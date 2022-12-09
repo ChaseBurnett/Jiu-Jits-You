@@ -47,7 +47,7 @@ export const NewSessionForm = () => {
         }
         const response = await fetch (`http://localhost:8088/posts`, options);
         await response.json();
-        navigate("/mainpage")
+        navigate("/mainPage")
     }
       sendData()
     }   
