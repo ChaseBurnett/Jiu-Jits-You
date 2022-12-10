@@ -1,0 +1,12 @@
+.post {
+    border: 5px ridge red;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+iframe {
+    margin: 50px;
+    display: flex;
+}

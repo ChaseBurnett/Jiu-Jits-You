@@ -9,10 +9,7 @@ export const EditPost = () => {
         classLocation: "",
         classDescription: "",
         skillUrl:"",
-        reallyGood: false,
-        good: false,
-        okay: false,
-        terrible: false,
+        sessionMoodsId: 0,
         improvementBox: ""
     })
     
@@ -24,7 +21,7 @@ export const EditPost = () => {
     useEffect(
         () => {
             const fetchData = async () => {
-                const response = await fetch(`http://localhost:8088/posts/${postsId}`)
+                const response = await fetch(`http://localhost:8088/posts/${postsId}?_expand=sessionMoods`)
                 const postsArray = await response.json()
                 update(postsArray)
             }
@@ -43,10 +40,7 @@ export const EditPost = () => {
            classLocation: posts.classLocation,
            classDescription: posts.classDescription,
            skillUrl: posts.skillUrl,
-           reallyGood: posts.reallyGood,
-           good: posts.good,
-           okay: posts.okay,
-           terrible: posts.terrible,
+           sessionMoodsId: posts.sessionMoodsId,
            improvementBox: posts.improvementBox
          }
     
@@ -59,7 +53,7 @@ export const EditPost = () => {
           },
           body: JSON.stringify(formToSendToAPI)
         }
-        const response = await fetch (`http://localhost:8088/posts/${posts.id}`, options);
+        const response = await fetch (`http://localhost:8088/posts/${posts.id}?_expand=sessionMoods`, options);
         await response.json();
         navigate("/mainpage")
     }
@@ -147,11 +141,12 @@ export const EditPost = () => {
                 <div className="form-group">
                     <label htmlFor="ReallyGood">ReallyGood:</label>
                     <input type="radio"
-                        value={posts.reallyGood}
+                        value="1"
+                        checked={posts.sessionMoodsId===1}
                         onChange={
                            (event) => {
                               const copy = {...posts}
-                              copy.reallyGood = event.target.checked
+                              copy.sessionMoodsId = +event.target.value
                               update(copy)
                            }
                         } />
@@ -161,11 +156,12 @@ export const EditPost = () => {
                 <div className="form-group">
                     <label htmlFor="good">Good:</label>
                     <input type="radio"
-                        value={posts.good}
+                        value="2"
+                        checked={posts.sessionMoodsId===2}
                         onChange={
                            (event) => {
                               const copy = {...posts}
-                              copy.good = event.target.checked
+                              copy.sessionMoodsId = +event.target.value
                               update(copy)
                            }
                         } />
@@ -175,11 +171,12 @@ export const EditPost = () => {
                 <div className="form-group">
                     <label htmlFor="okay">Okay:</label>
                     <input type="radio"
-                        value={posts.okay}
+                        value="3"
+                        checked={posts.sessionMoodsId===3}
                         onChange={
                            (event) => {
                               const copy = {...posts}
-                              copy.okay = event.target.checked
+                              copy.sessionMoodsId = +event.target.value
                               update(copy)
                            }
                         } />
@@ -189,11 +186,12 @@ export const EditPost = () => {
                 <div className="form-group">
                     <label htmlFor="terrible">Terrible:</label>
                     <input type="radio"
-                        value={posts.terrible}
+                        value="4"
+                        checked={posts.sessionMoodsId===4}
                         onChange={
                            (event) => {
                               const copy = {...posts}
-                              copy.terrible = event.target.checked
+                              copy.sessionMoodsId = +event.target.value
                               update(copy)
                            }
                         } />

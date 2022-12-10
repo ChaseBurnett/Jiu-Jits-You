@@ -9,10 +9,7 @@ export const NewSessionForm = () => {
         classLocation: "",
         classDescription: "",
         skillUrl:"",
-        reallyGood: false,
-        good: false,
-        okay: false,
-        terrible: false,
+        sessionMoodsId: 0,
         improvementBox: ""
     })
 
@@ -29,10 +26,7 @@ export const NewSessionForm = () => {
            classLocation: form.classLocation,
            classDescription: form.classDescription,
            skillUrl: form.skillUrl,
-           reallyGood: form.reallyGood,
-           good: form.good,
-           okay: form.okay,
-           terrible: form.terrible,
+           sessionMoodsId: form.sessionMoodsId,
            improvementBox: form.improvementBox
          }
     
@@ -133,11 +127,12 @@ export const NewSessionForm = () => {
                 <div className="form-group">
                     <label htmlFor="ReallyGood">ReallyGood:</label>
                     <input type="radio"
-                        value={form.reallyGood}
+                        value="1"
+                        checked={form.sessionMoodsId===1}
                         onChange={
                            (event) => {
                               const copy = {...form}
-                              copy.reallyGood = event.target.checked
+                              copy.sessionMoodsId = +event.target.value
                               update(copy)
                            }
                         } />
@@ -147,11 +142,12 @@ export const NewSessionForm = () => {
                 <div className="form-group">
                     <label htmlFor="good">Good:</label>
                     <input type="radio"
-                        value={form.good}
+                        value="2"
+                        checked={form.sessionMoodsId===2}
                         onChange={
                            (event) => {
                               const copy = {...form}
-                              copy.good = event.target.checked
+                              copy.sessionMoodsId = +event.target.value
                               update(copy)
                            }
                         } />
@@ -161,11 +157,12 @@ export const NewSessionForm = () => {
                 <div className="form-group">
                     <label htmlFor="okay">Okay:</label>
                     <input type="radio"
-                        value={form.okay}
+                        value="3"
+                        checked={form.sessionMoodsId===3}
                         onChange={
                            (event) => {
                               const copy = {...form}
-                              copy.okay = event.target.checked
+                              copy.sessionMoodsId = +event.target.value
                               update(copy)
                            }
                         } />
@@ -175,11 +172,12 @@ export const NewSessionForm = () => {
                 <div className="form-group">
                     <label htmlFor="terrible">Terrible:</label>
                     <input type="radio"
-                        value={form.terrible}
+                        value="4"
+                        checked={form.sessionMoodsId===4}
                         onChange={
                            (event) => {
                               const copy = {...form}
-                              copy.terrible = event.target.checked
+                              copy.sessionMoodsId = +event.target.value
                               update(copy)
                            }
                         } />
