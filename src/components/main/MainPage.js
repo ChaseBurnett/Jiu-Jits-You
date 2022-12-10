@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { UserNav } from "../nav/NavBar"
 import { UserDetails } from "../user/userDetails";
 import { useNavigate } from "react-router-dom";
+import "./MainPage.css"
 
 
 export const MainPage = () => {
@@ -19,7 +20,7 @@ export const MainPage = () => {
     useEffect(
         () => {
             const fetchData = async () => {
-                const response = await fetch(`http://localhost:8088/posts`)
+                const response = await fetch(`http://localhost:8088/posts?_expand=sessionMoods`)
                 const postArray = await response.json()
                 setPosts(postArray)
             }
@@ -74,10 +75,10 @@ export const MainPage = () => {
                     <p>{post.classLocation}</p>
                     <p>{post.classDescription}</p>
                     <iframe src={post.skillUrl}></iframe>
-                    <p>{post.reallyGood ? "🤩" : ""}</p>
-                    <p>{post.good ? "😃" : ""}</p>
-                    <p>{post.okay ? "🥹" : ""}</p>
-                    <p>{post.terrible ? "🤬" : "" }</p>
+                    <p>{post.sessionMoods.id===1 ? "🤩" : ""}</p>
+                    <p>{post.sessionMoods.id===2 ? "😃" : ""}</p>
+                    <p>{post.sessionMoods.id===3 ? "🥹" : ""}</p>
+                    <p>{post.sessionMoods.id===4 ? "🤬" : "" }</p>
                     <p>{post.improvementBox}</p>
                     <footer>
                     {deleteButton(post.id)}

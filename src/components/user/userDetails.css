@@ -1,0 +1,10 @@
+.user_info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: left;
+    border: 10px black solid;
+    margin-left: 5px;
+    margin-right: 750px;
+    padding-left: 10px;
+}
