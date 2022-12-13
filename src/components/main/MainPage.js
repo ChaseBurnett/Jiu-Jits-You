@@ -4,6 +4,8 @@ import { UserNav } from "../nav/NavBar"
 import { UserDetails } from "../user/userDetails";
 import { useNavigate } from "react-router-dom";
 import "./MainPage.css"
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 
 export const MainPage = () => {
@@ -45,7 +47,7 @@ export const MainPage = () => {
     )
 
     const deleteButton = (id) => {
-        return <button onClick={()=> {
+        return <Button variant="primary" onClick={()=> {
             const deleteButtonAction = async () => {
                await fetch(`http://localhost:8088/posts/${id}`, {
                   method: "DELETE"
@@ -53,7 +55,7 @@ export const MainPage = () => {
             }
             deleteButtonAction()
             navigate("/mainPage")
-         }} className="post_delete">Delete</button>
+         }} className="post_delete">Delete</Button>
       }
     
 
@@ -67,10 +69,12 @@ export const MainPage = () => {
         {
             filteredPosts.map(
                 (post) => {
-                    return <section className="post">
+                    return <Card style={{ width: '25rem' }}>
+                        <Card.Body>
                     <header>
                     <Link to={`/sessionForm/${post.id}/edit`}>Post {post.id}</Link>
                     </header>
+                    <Card.Text>
                     <p>{post.date}</p>
                     <p>{post.classLocation}</p>
                     <p>{post.classDescription}</p>
@@ -83,7 +87,9 @@ export const MainPage = () => {
                     <footer>
                     {deleteButton(post.id)}
                     </footer>
-                    </section>
+                    </Card.Text>
+                    </Card.Body>
+                    </Card>
                 }
             )
         }    
