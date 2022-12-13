@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import "./userDetails.css"
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 export const UserDetails = () => {
 
@@ -9,6 +13,7 @@ export const UserDetails = () => {
 
     const localJjUser = localStorage.getItem("capstone_user")
     const jjUserObject = JSON.parse(localJjUser)
+    const navigate = useNavigate()
 
     useEffect(
         () => {
@@ -36,13 +41,22 @@ export const UserDetails = () => {
            {
             filteredUser.map(
             (user) => {
-                return <section className="user_info">
-                    <h4>{user.userName}</h4>
+                return <Card style={{ width: '18rem' }}>
+                    <Card.Body>
+                    <Card.Text>
+                    <h3>{user.userName}</h3>
                     <h4>{user.beltRank}</h4>
                     <h4>{user.age}</h4>
                     <h4>{user.weightClass}</h4>
                     <h4>{user.gym}</h4>
-                </section>
+                    </Card.Text>
+                    <footer>
+                        <Link to={`/userDetails/${user.uid}/edit`}>
+                        <Button>Edit User Info</Button>
+                        </Link>
+                    </footer>
+                    </Card.Body>
+                </Card>
             }
             )
            }

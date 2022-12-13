@@ -6,6 +6,7 @@ import { Register } from "./auth/Register";
 import { NewSessionForm } from "./sessionForm/NewSessionForm";
 import { MainPage } from "./main/MainPage";
 import { EditPost } from "./sessionForm/EditPost";
+import { EditUser } from "./user/EditUserDetails";
 
 export const JiuJitsYou = () => {
   return (
@@ -15,6 +16,7 @@ export const JiuJitsYou = () => {
       <Route path="/logSession" element={<NewSessionForm />} />
       <Route path="/mainPage" element={<MainPage />} />
       <Route path="/sessionForm/:postsId/edit" element={<EditPost />} />
+      <Route path="/userDetails/:uid/edit" element={<EditUser/>}/>
 
       <Route
         path="*"
