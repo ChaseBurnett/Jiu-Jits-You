@@ -4,9 +4,6 @@
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: column;
+    margin-bottom: 15px;
 }
 
-iframe {
-    margin: 50px;
-    display: flex;
-}
