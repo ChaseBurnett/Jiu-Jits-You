@@ -24,7 +24,7 @@ export const EditUser= () => {
             const fetchData = async () => {
                 const response = await fetch(`http://localhost:8088/users?uid=${uid}`)
                 const userArray = await response.json()
-                update(userArray)
+                update(userArray[0])
             }
             fetchData()
         },
@@ -55,7 +55,7 @@ export const EditUser= () => {
         }
         const response = await fetch (`http://localhost:8088/users/${users.uid}`, options);
         await response.json();
-        navigate("/mainpage")
+        navigate("/mainPage")
     }
       putData()
     }   

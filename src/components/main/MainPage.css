@@ -1,9 +1,8 @@
-.post {
-    border: 5px ridge red;
+.main-cards {
+    border: 5px solid black;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-    margin-bottom: 15px;
+    align-items: center;
+    margin: 10px 100px;
+    text-align: center;
 }
 
