@@ -69,8 +69,9 @@ export const MainPage = () => {
         {
             filteredPosts.map(
                 (post) => {
-                    return <Card style={{ width: '25rem' }}>
-                        <Card.Body>
+                    return (
+                    <Card className="main-cards" >
+                    <Card.Body>
                     <header>
                     <Link to={`/sessionForm/${post.id}/edit`}>Post {post.id}</Link>
                     </header>
@@ -90,6 +91,7 @@ export const MainPage = () => {
                     </Card.Text>
                     </Card.Body>
                     </Card>
+                    )
                 }
             )
         }    

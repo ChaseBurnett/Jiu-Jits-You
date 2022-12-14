@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserNav } from "../nav/NavBar"
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import "./NewSessionForm.css"
 
 export const NewSessionForm = () => {
 
@@ -49,11 +52,11 @@ export const NewSessionForm = () => {
       return (
         <>
         <UserNav />
-        <form className="form">
+        <Form className="form">
             <h2 className="form__title">Log New Training Session</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="date">Date:</label>
+                    <Form.Label htmlFor="date">Date:</Form.Label>
                     <input
                         required autoFocus
                         type="text"
@@ -71,7 +74,7 @@ export const NewSessionForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="classLocation">Class Location:</label>
+                    <Form.Label htmlFor="classLocation">Class Location:</Form.Label>
                     <input
                         required autoFocus
                         type="text"
@@ -89,7 +92,7 @@ export const NewSessionForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="classDescription">Class Description:</label>
+                    <Form.Label htmlFor="classDescription">Class Description:</Form.Label>
                     <input
                         required autoFocus
                         type="text"
@@ -107,7 +110,7 @@ export const NewSessionForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="skillUrl">Video Link:</label>
+                    <Form.Label htmlFor="skillUrl">Video Link:</Form.Label>
                     <input
                         required autoFocus
                         type="url"
@@ -123,9 +126,12 @@ export const NewSessionForm = () => {
                         } />
                 </div>
             </fieldset>
+            <div>
+                <p>How do you feel like you did in class?</p>
+            </div>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="ReallyGood">ReallyGood:</label>
+                    <Form.Label htmlFor="ReallyGood">ReallyGood:</Form.Label>
                     <input type="radio"
                         value="1"
                         checked={form.sessionMoodsId===1}
@@ -140,7 +146,7 @@ export const NewSessionForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="good">Good:</label>
+                    <Form.Label htmlFor="good">Good:</Form.Label>
                     <input type="radio"
                         value="2"
                         checked={form.sessionMoodsId===2}
@@ -155,7 +161,7 @@ export const NewSessionForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="okay">Okay:</label>
+                    <Form.Label htmlFor="okay">Okay:</Form.Label>
                     <input type="radio"
                         value="3"
                         checked={form.sessionMoodsId===3}
@@ -170,7 +176,7 @@ export const NewSessionForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="terrible">Terrible:</label>
+                    <Form.Label htmlFor="terrible">Terrible:</Form.Label>
                     <input type="radio"
                         value="4"
                         checked={form.sessionMoodsId===4}
@@ -185,7 +191,7 @@ export const NewSessionForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="classDescription">Areas to Improve On:</label>
+                    <Form.Label htmlFor="classDescription">Areas to Improve On:</Form.Label>
                     <input
                         required autoFocus
                         type="text"
@@ -201,12 +207,14 @@ export const NewSessionForm = () => {
                         } />
                 </div>
             </fieldset>
-            <button 
+            <div className="btn-primary">
+            <Button 
             onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-            className="btn btn-primary">
+            >
                 Post
-            </button>
-        </form>
+            </Button>
+            </div>
+        </Form>
         </>
     )
 }

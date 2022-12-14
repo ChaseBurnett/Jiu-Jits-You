@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { UserNav } from "../nav/NavBar"
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 export const EditPost = () => {
 
@@ -137,6 +139,9 @@ export const EditPost = () => {
                         } />
                 </div>
             </fieldset>
+            <div>
+                <p>How do you feel like you did in class?</p>
+            </div>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="ReallyGood">ReallyGood:</label>
