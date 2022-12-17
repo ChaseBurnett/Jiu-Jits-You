@@ -208,11 +208,14 @@ export const NewSessionForm = () => {
                 </div>
             </fieldset>
             <div className="btn-primary">
-            <Button 
-            onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-            >
-                Post
-            </Button>
+                { form.improvementBox ? 
+                     <Button 
+                     onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+                     >
+                         Post
+                     </Button> 
+                     : ""
+                }
             </div>
         </Form>
         </>

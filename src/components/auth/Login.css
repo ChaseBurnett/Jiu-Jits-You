@@ -1,6 +1,14 @@
 .h1,
 h1 {
   font-size: 2.5rem;
+  color: white;
+  text-align: center;
+}
+
+.h2,
+h2 {
+  color: white;
+  text-align: center;
 }
 
 fieldset {
@@ -8,28 +16,35 @@ fieldset {
   padding: 1rem 0;
   margin: 0;
   border: 0;
+  text-align: center;
 }
 
-.form--login {
-  display: inline-block;
-  margin: 0 auto;
-  text-align: left;
+.form-email {
+  display: inline-flexbox;
+  margin: 20px 12px ;
+  align-items: center;
 }
 
-.form--login > fieldset > input[type="email"] {
+/* .form--login > fieldset > input[type="email"] {
   width: 25em;
-}
+  text-align: center;
+  align-items: center;
+} */
 
 .label--login {
   width: 8rem;
   display: inline-block;
+  text-align: center;
 }
 
 .form-control {
-  display: block;
-  width: 94%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  width: 50%;
   height: calc(1.5em + 0.75rem + 2px);
-  padding: 0.375rem 0.75rem;
+  padding: 20px 12px;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -45,6 +60,12 @@ fieldset {
 
 .container--login {
   text-align: center;
+  background-image: url("https://i.pinimg.com/originals/03/2f/65/032f65b5b3051e000c318661a57c68bf.jpg");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }
 
 .form--login {
@@ -55,16 +76,10 @@ fieldset {
   background-color: hsla(0, 0%, 100%, 0.4);
   background-blend-mode: overlay;
   background-repeat: no-repeat;
+  text-align: center;
 }
 
 .button--close {
   position: relative;
   bottom: -2rem;
-}
-
-body {
-  background-image: url();
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-position: center;
 }

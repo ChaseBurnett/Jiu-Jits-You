@@ -61,6 +61,7 @@ export const MainPage = () => {
 
     return (
         <>
+        <main className="background">
         <UserNav />
         <UserDetails />
         <h2>Previously recorded classes</h2> 
@@ -96,6 +97,7 @@ export const MainPage = () => {
             )
         }    
         </article>  
+        </main>
         </>
     )
 

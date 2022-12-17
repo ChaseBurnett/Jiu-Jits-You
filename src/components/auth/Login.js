@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { emailAuth } from "../helpers/emailAuth";
 import { googleAuth } from "../helpers/googleAuth";
 import "./Login.css";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 export const Login = () => {
   const [login, setLogin] = useState({
@@ -32,7 +34,7 @@ export const Login = () => {
   return (
     <main className="container--login">
       <section>
-        <form className="form--login" onSubmit={onSubmitLoginEmail}>
+        <Form className="form--login" onSubmit={onSubmitLoginEmail}>
           <h1>Jiu Jits You</h1>
           <h2>Please sign in</h2>
           <fieldset>
@@ -43,6 +45,7 @@ export const Login = () => {
               id="email"
               onChange={(evt) => updateLogin(evt)}
               className="form-control"
+              key={`form-email`}
               placeholder="Email address"
               required
               autoFocus
@@ -56,23 +59,23 @@ export const Login = () => {
               id="password"
               onChange={(evt) => updateLogin(evt)}
               className="form-control"
-              placeholder="password"
+              placeholder="Password"
               required
               autoFocus
             />
           </fieldset>
           <fieldset>
-            <button type="submit">Sign in</button>
+            <Button type="submit">Sign in</Button>
           </fieldset>
-        </form>
+        </Form>
       </section>
       <section className="link--register">
         <Link to="/register">Not a member yet?</Link>
       </section>
       <h2>Login With Google?</h2>
-      <button type="submit" onClick={onSubmitLoginGoogle}>
+      <Button type="submit" onClick={onSubmitLoginGoogle}>
         Let's Do It!
-      </button>
+      </Button>
     </main>
   );
 };
