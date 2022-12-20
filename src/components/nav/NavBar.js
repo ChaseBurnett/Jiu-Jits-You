@@ -15,11 +15,12 @@ export const UserNav = () => {
     return (
         <Navbar bg="dark" variant="dark" >
             <Container>
+            <Navbar.Brand classname ="nav" href="/mainPage">Jiu Jits You</Navbar.Brand>
             <Nav className="m-auto">
                 <Nav.Link className="navbar__link" href="/mainPage">Main Page</Nav.Link>
                 <Nav.Link className="navbar__link" href="/logSession">Log New Training Session</Nav.Link>
-                <Nav.Link className="navbar__link" href="/competitions">Competitions</Nav.Link>
-                <Nav.Link className="navbar__link" href="/searchGyms">Gym Search</Nav.Link>
+                <Nav.Link className="navbar__link" href="https://ibjjf.com/events/championships">Competitions</Nav.Link>
+                <Nav.Link className="navbar__link" href="https://rb.gy/rizaha">Gym Search</Nav.Link>
                 <Nav.Link className="navbar__link" href="" onClick={onLogout}>Logout</Nav.Link>
         </Nav>
         </Container>

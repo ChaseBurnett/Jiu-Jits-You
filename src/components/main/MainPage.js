@@ -63,15 +63,17 @@ export const MainPage = () => {
         <>
         <main className="background">
         <UserNav />
+        <div className="userDetails">
         <UserDetails />
+        </div>
         <h2>Previously recorded classes</h2> 
-
+        <div>
         <article>
         {
             filteredPosts.map(
                 (post) => {
                     return (
-                    <Card className="main-cards" >
+                    <Card className="main-cards">
                     <Card.Body>
                     <header>
                     <Link to={`/sessionForm/${post.id}/edit`}>Post {post.id}</Link>
@@ -97,6 +99,7 @@ export const MainPage = () => {
             )
         }    
         </article>  
+        </div>
         </main>
         </>
     )
