@@ -1,11 +1,12 @@
 .form{
-    margin: 10px;
+    margin: 150px;
 }
 
 .form__title {
     text-align: center;
     text-decoration: underline;
-    text-shadow: 1px 1px 2px rgb(75, 73, 73);
+    color: black;
+    text-shadow: 1px 1px 2px rgb(131, 128, 128);
 }
 
 .btn-primary {

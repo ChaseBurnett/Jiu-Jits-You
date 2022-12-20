@@ -32,6 +32,7 @@ export const Login = () => {
   };
 
   return (
+    <>
     <main className="container--login">
       <section>
         <Form className="form--login" onSubmit={onSubmitLoginEmail}>
@@ -77,5 +78,6 @@ export const Login = () => {
         Let's Do It!
       </Button>
     </main>
+    </>
   );
 };
