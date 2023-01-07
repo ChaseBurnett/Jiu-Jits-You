@@ -18,7 +18,30 @@ export const emailAuth = {
   register: function(userObj, navigate) {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, userObj.email, userObj.password)
-      .then((userCredential) => {
+      .then( async (userCredential) => {
+        
+        console.log(userCredential);
+
+        let newUser = {
+          uid: userCredential.user.uid,
+          userName: userObj.fullName,
+          beltRank: userObj.beltRank,
+          age: "",
+          weightClass: "",
+          img: "",
+          gym: ""
+        }
+
+        const options = {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newUser)
+          }
+          const response = await fetch (`http://localhost:8088/users`, options);
+          newUser = await response.json();
+
         const auth = getAuth();
         updateProfile(auth.currentUser, {
           displayName: userObj.fullName,
@@ -28,6 +51,7 @@ export const emailAuth = {
               email: userCredential.user.email,
               displayName: userObj.fullName,
               uid: userCredential.user.uid,
+              id: newUser.id,
               type: "email",
             };
             // Saves the user to localstorage

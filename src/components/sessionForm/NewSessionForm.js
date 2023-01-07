@@ -34,19 +34,19 @@ export const NewSessionForm = () => {
          }
     
 
-    const sendData = async () => {
-        const options = {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(formToSendToAPI)
+            const sendData = async () => {
+            const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formToSendToAPI)
+            }
+            const response = await fetch (`http://localhost:8088/posts`, options);
+            await response.json();
+            navigate("/mainPage")
         }
-        const response = await fetch (`http://localhost:8088/posts`, options);
-        await response.json();
-        navigate("/mainPage")
-    }
-      sendData()
+        sendData()
     }   
 
       return (
