@@ -18,13 +18,16 @@ export const MainPage = () => {
     const localJjUser = localStorage.getItem("capstone_user")
     const jjUserObject = JSON.parse(localJjUser)
 
+    const getPosts = async () => {
+        const response = await fetch(`http://localhost:8088/posts?_expand=sessionMoods`)
+        const postArray = await response.json()
+        setPosts(postArray)
+    }
 
     useEffect(
         () => {
             const fetchData = async () => {
-                const response = await fetch(`http://localhost:8088/posts?_expand=sessionMoods`)
-                const postArray = await response.json()
-                setPosts(postArray)
+                getPosts();
             }
             fetchData()
         },
@@ -52,6 +55,7 @@ export const MainPage = () => {
                await fetch(`http://localhost:8088/posts/${id}`, {
                   method: "DELETE"
                })
+               getPosts();
             }
             deleteButtonAction()
             navigate("/mainPage")

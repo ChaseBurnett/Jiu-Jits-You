@@ -45,19 +45,19 @@ export const EditUser= () => {
          }
     
 
-    const putData = async () => {
-        const options = {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(formToSendToAPI)
+        const putData = async () => {
+            const options = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formToSendToAPI)
+            }
+            const response = await fetch (`http://localhost:8088/users/${users.id}`, options);
+            await response.json();
+            navigate("/mainPage")
         }
-        const response = await fetch (`http://localhost:8088/users/${users.uid}`, options);
-        await response.json();
-        navigate("/mainPage")
-    }
-      putData()
+        putData()
     }   
 
     return (

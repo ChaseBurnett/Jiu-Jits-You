@@ -47,19 +47,18 @@ export const EditPost = () => {
          }
     
 
-    const putData = async () => {
-        const options = {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(formToSendToAPI)
+        const putData = async () => {
+            const options = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formToSendToAPI)
+            }
+            await fetch (`http://localhost:8088/posts/${posts.id}?_expand=sessionMoods`, options);
+            navigate("/mainpage")
         }
-        const response = await fetch (`http://localhost:8088/posts/${posts.id}?_expand=sessionMoods`, options);
-        await response.json();
-        navigate("/mainpage")
-    }
-      putData()
+        putData()
     }   
 
     return (
